@@ -10,4 +10,6 @@ public interface EmployeeDAO {
 	void removeEmployee(Employee employee);
 
 	List<Employee> findAllEmployees();
+
+	Employee findEmployeeById(int employeeId);
 }

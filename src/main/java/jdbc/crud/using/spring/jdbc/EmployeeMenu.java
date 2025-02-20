@@ -18,7 +18,8 @@ public class EmployeeMenu {
 			System.out.println("2. Update Employee");
 			System.out.println("3. Delete Employee");
 			System.out.println("4. View All Employees");
-			System.out.println("5. Exit");
+			System.out.println("5. Find Employee by ID");
+			System.out.println("6. Exit");
 			System.out.print("Enter your choice: ");
 			int choice = scanner.nextInt();
 			scanner.nextLine(); // Consume newline
@@ -37,6 +38,9 @@ public class EmployeeMenu {
 				viewAllEmployees();
 				break;
 			case 5:
+				findEmployeeById(scanner);
+				break;
+			case 6:
 				System.out.println("Exiting...");
 				scanner.close();
 				System.exit(0);
@@ -81,6 +85,18 @@ public class EmployeeMenu {
 		System.out.println("Employee List:");
 		for (Employee employee : employees) {
 			System.out.println(employee);
+		}
+	}
+
+	private void findEmployeeById(Scanner scanner) {
+		System.out.print("Enter employee ID to find: ");
+		int employeeId = scanner.nextInt();
+		Employee employee = employeeDAO.findEmployeeById(employeeId);
+		if (employee != null) {
+			System.out.println("Employee Details:");
+			System.out.println(employee);
+		} else {
+			System.out.println("Employee with ID " + employeeId + " not found.");
 		}
 	}
 }
